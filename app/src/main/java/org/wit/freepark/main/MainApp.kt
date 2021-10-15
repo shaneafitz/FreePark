@@ -1,13 +1,14 @@
 package org.wit.freepark.main
 
 import android.app.Application
-import org.wit.freepark.models.FreeparkModel
+import org.wit.freepark.models.FreeparkMemStore
+//import org.wit.freepark.models.FreeparkModel
 import timber.log.Timber
 import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    val freeparks = ArrayList<FreeparkModel>()
+    val freeparks = FreeparkMemStore()
 
     override fun onCreate() {
         super.onCreate()

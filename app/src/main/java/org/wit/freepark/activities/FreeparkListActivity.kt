@@ -8,10 +8,12 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.freepark.R
 import org.wit.freepark.adapters.FreeparkAdapter
+import org.wit.freepark.adapters.FreeparkListener
 import org.wit.freepark.databinding.ActivityFreeparkListBinding
 import org.wit.freepark.main.MainApp
+import org.wit.freepark.models.FreeparkModel
 
-class FreeparkListActivity : AppCompatActivity() {
+class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityFreeparkListBinding
@@ -27,7 +29,7 @@ class FreeparkListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = FreeparkAdapter(app.freeparks)
+        binding.recyclerView.adapter = FreeparkAdapter(app.freeparks.findAll(), this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -41,6 +43,16 @@ class FreeparkListActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onFreeparkClick(freepark: FreeparkModel) {
+        val launcherIntent = Intent(this, FreeParkActivity::class.java)
+        launcherIntent.putExtra("freepark_edit", freepark)
+        startActivityForResult(launcherIntent,0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
 

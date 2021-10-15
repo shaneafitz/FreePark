@@ -5,4 +5,6 @@
     <string name="hint_parkingDescription">Description </string>
     <string name="menu_addFreepark">Add</string>
     <string name="menu_cancelFreepark">Cancel</string>
+    <string name="enter_freepark_location"> Please enter a Freepark Location </string>
+    <string name="save_freepark"> Save Freepark </string>
 </resources>
