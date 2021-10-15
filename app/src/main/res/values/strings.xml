@@ -3,4 +3,6 @@
     <string name="button_addParking">Add Parking</string>
     <string name="hint_parkingLocation">Parking Location</string>
     <string name="hint_parkingDescription">Description </string>
+    <string name="menu_addFreepark">Add</string>
+    <string name="menu_cancelFreepark">Cancel</string>
 </resources>
