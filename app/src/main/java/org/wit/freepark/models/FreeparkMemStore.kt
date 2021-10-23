@@ -27,6 +27,7 @@ class FreeparkMemStore : FreeparkStore {
         if (foundFreepark != null) {
             foundFreepark.location = freepark.location
             foundFreepark.description = freepark.description
+            foundFreepark.image = freepark.image
             logAll()
         }
     }

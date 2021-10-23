@@ -7,4 +7,7 @@
     <string name="menu_cancelFreepark">Cancel</string>
     <string name="enter_freepark_location"> Please enter a Freepark Location </string>
     <string name="save_freepark"> Save Freepark </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_freepark_image">Select freepark image</string>
+    <string name="change_freepark_image">Change freepark image</string>
 </resources>
