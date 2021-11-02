@@ -23,11 +23,14 @@ class FreeparkMemStore : FreeparkStore {
     }
 
     override fun update(freepark: FreeparkModel) {
-        var foundFreepark: FreeparkModel? = freeparks.find { p -> p.id == freepark.id }
+        val foundFreepark: FreeparkModel? = freeparks.find { p -> p.id == freepark.id }
         if (foundFreepark != null) {
             foundFreepark.location = freepark.location
             foundFreepark.description = freepark.description
             foundFreepark.image = freepark.image
+            foundFreepark.lat = freepark.lat
+            foundFreepark.lng = freepark.lng
+            foundFreepark.zoom = freepark.zoom
             logAll()
         }
     }
