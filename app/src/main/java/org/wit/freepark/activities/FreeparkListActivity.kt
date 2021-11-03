@@ -32,7 +32,7 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = FreeparkAdapter(app.freeparks.findAll(), this)
+        loadFreeparks()
         registerRefreshCallback()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -61,7 +61,16 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { binding.recyclerView.adapter?.notifyDataSetChanged() }
+            { loadFreeparks() }
+    }
+
+    private fun loadFreeparks() {
+        showFreeparks(app.freeparks.findAll())
+    }
+
+    fun showFreeparks (freeparks: List<FreeparkModel>) {
+        binding.recyclerView.adapter = FreeparkAdapter(freeparks, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 }
 
