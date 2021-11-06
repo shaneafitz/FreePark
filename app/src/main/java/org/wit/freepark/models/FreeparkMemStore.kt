@@ -35,6 +35,10 @@ class FreeparkMemStore : FreeparkStore {
         }
     }
 
+    override fun delete(freepark: FreeparkModel){
+        freeparks.remove(freepark)
+    }
+
     fun logAll() {
         freeparks.forEach { i("${it}") }
     }

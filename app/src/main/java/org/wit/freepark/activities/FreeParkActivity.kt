@@ -26,11 +26,12 @@ class FreeParkActivity : AppCompatActivity() {
 
     var freepark = FreeparkModel()
     lateinit var app: MainApp
+    var edit = false
     // var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var edit = false
+
         binding = ActivityFreeparkBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
@@ -91,11 +92,16 @@ class FreeParkActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_freepark, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.item_delete -> {
+                app.freeparks.delete(freepark)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
