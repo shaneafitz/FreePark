@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5560547306",
+    "project_id": "freepark-68b8a",
+    "storage_bucket": "freepark-68b8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5560547306:android:5623d32e0ed36917efe493",
+        "android_client_info": {
+          "package_name": "org.wit.freepark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5560547306-3g9r4tv1eh7q9j2gjqptipn0h3h873ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG3h3kUg6nV0CTJkCaS3_SRjtrgReB3xA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5560547306-3g9r4tv1eh7q9j2gjqptipn0h3h873ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
