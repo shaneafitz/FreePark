@@ -33,7 +33,6 @@ class LoginsActivity : AppCompatActivity() {
 
         mAuth = Firebase.auth
         setUpToolbar()
-
         binding.txtRegister.setOnClickListener {
             val intent = Intent(this@LoginsActivity, RegisterActivity::class.java)
             startActivity(intent)

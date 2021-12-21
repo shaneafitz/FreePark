@@ -5,4 +5,5 @@ interface  FreeparkStore {
     fun create(freepark: FreeparkModel)
     fun update(freepark: FreeparkModel)
     fun delete(freepark: FreeparkModel)
+    fun findById(id:Long) : FreeparkModel?
 }

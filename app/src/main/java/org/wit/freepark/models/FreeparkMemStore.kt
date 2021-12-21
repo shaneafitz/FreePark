@@ -42,4 +42,8 @@ class FreeparkMemStore : FreeparkStore {
     fun logAll() {
         freeparks.forEach { i("${it}") }
     }
+    override fun findById(id:Long) : FreeparkModel? {
+        val foundFreepark: FreeparkModel? = freeparks.find { it.id == id }
+        return foundFreepark
+    }
 }

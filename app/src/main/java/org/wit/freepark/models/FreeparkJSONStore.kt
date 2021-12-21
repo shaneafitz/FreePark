@@ -60,6 +60,10 @@ class FreeparkJSONStore(private val context: Context) : FreeparkStore {
         freeparks.remove(freepark)
         serialize()
     }
+    override fun findById(id:Long) : FreeparkModel? {
+        val foundFreepark: FreeparkModel? = freeparks.find { it.id == id }
+        return foundFreepark
+    }
 
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(freeparks, listType)

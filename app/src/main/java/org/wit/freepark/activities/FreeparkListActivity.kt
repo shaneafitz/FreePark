@@ -20,6 +20,7 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityFreeparkListBinding
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapsIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
         binding.recyclerView.layoutManager = layoutManager
         loadFreeparks()
         registerRefreshCallback()
+        registerMapCallback()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -44,6 +46,10 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, FreeParkActivity::class.java)
                 refreshIntentLauncher.launch(launcherIntent)
+            }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, FreeparkMapsActivity::class.java)
+                mapsIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -62,6 +68,12 @@ class FreeparkListActivity : AppCompatActivity(), FreeparkListener {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             { loadFreeparks() }
+    }
+
+    private fun registerMapCallback() {
+        mapsIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { }
     }
 
     private fun loadFreeparks() {
