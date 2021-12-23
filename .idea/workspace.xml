@@ -12,7 +12,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0805ae5d-027a-4591-bf51-7fb6bec85526" name="Default Changelist" comment="Added files that didn't commit for register/login" />
+    <list default="true" id="0805ae5d-027a-4591-bf51-7fb6bec85526" name="Default Changelist" comment="Added files that didn't commit for register/login">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +36,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -59,7 +66,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-54073649">
@@ -78,6 +85,10 @@
       <recent name="org.wit.freepark" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.wit.freepark.views.map" />
+      <recent name="org.wit.freepark.views.freepark" />
+      <recent name="org.wit.freepark.views.freeparkList" />
+      <recent name="org.wit.freepark.views.editLocation" />
       <recent name="org.wit.freepark.activities" />
     </key>
     <key name="android.template.764226635">
@@ -145,6 +156,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\fitzp\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0805ae5d-027a-4591-bf51-7fb6bec85526" name="Default Changelist" comment="" />
@@ -251,7 +265,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640114407689</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Display all parking locations on a map in a new activity">
+      <created>1640114826395</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1640114826395</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Updated to MVP architecture">
+      <created>1640288781937</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1640288781937</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,7 +287,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/MVP" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -281,6 +321,7 @@
     <MESSAGE value="Added files that didn't commit for register/login" />
     <MESSAGE value="Implemented splash screen" />
     <MESSAGE value="Display all parking locations on a map in a new activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Display all parking locations on a map in a new activity" />
+    <MESSAGE value="Updated to MVP architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to MVP architecture" />
   </component>
 </project>

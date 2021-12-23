@@ -1,20 +1,15 @@
 package org.wit.freepark.activities
 
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.wit.freepark.R
 import org.wit.freepark.databinding.ActivityLoginsBinding
 import org.wit.freepark.main.MainApp
+import org.wit.freepark.views.freeparkList.FreeparkListView
 
 class LoginsActivity : AppCompatActivity() {
 
@@ -46,7 +41,7 @@ class LoginsActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
                 .addOnCompleteListener(this) {task ->
                     if (task.isSuccessful) {
-                        val intent = Intent(this@LoginsActivity, FreeparkListActivity::class.java)
+                        val intent = Intent(this@LoginsActivity, FreeparkListView::class.java)
                         startActivity(intent)
                         finish()
                     }

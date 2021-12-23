@@ -57,7 +57,8 @@ class FreeparkJSONStore(private val context: Context) : FreeparkStore {
     }
 
     override fun delete(freepark: FreeparkModel){
-        freeparks.remove(freepark)
+        val foundFreepark: FreeparkModel? = freeparks.find { it.id == freepark.id }
+        freeparks.remove(foundFreepark)
         serialize()
     }
     override fun findById(id:Long) : FreeparkModel? {

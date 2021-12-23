@@ -1,4 +1,4 @@
-package org.wit.freepark.adapters
+package org.wit.freepark.views.freeparkList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
