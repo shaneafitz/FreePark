@@ -8,11 +8,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import org.wit.freepark.databinding.ActivityRegisterBinding
 import org.wit.freepark.main.MainApp
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
-import org.wit.freepark.R
+import org.wit.freepark.views.freeparkList.FreeparkListView
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -53,7 +49,7 @@ class RegisterActivity : AppCompatActivity() {
                 mAuth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
                     .addOnCompleteListener(this) {task ->
                         if (task.isSuccessful) {
-                            val intent = Intent(this@RegisterActivity, FreeparkListActivity::class.java)
+                            val intent = Intent(this@RegisterActivity, FreeparkListView::class.java)
                             startActivity(intent)
                             finish()
                         } else {

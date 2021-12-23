@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.freepark.activities.FreeParkActivity">
+    tools:context="org.wit.freepark.views.freepark.FreeparkView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -64,38 +64,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/parkingLocation" />
 
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="@string/button_addParking"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <Button
             android:id="@+id/chooseImage"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
             android:text="@string/button_addImage"
-            app:layout_constraintStart_toStartOf="@+id/btnAdd"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <Button
             android:id="@+id/placemarkLocation"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="44dp"
             android:text="@string/button_location"
-            app:layout_constraintEnd_toEndOf="@+id/btnAdd"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/chooseImage"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <ImageView
             android:id="@+id/freeparkImage"
