@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.freepark.R
@@ -16,6 +17,7 @@ class FreeparkView : AppCompatActivity() {
 
     private lateinit var binding: ActivityFreeparkBinding
     lateinit var presenter: FreeparkPresenter
+    lateinit var map: GoogleMap
     var freepark = FreeparkModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +36,19 @@ class FreeparkView : AppCompatActivity() {
             presenter.doSelectImage()
         }
 
-        binding.placemarkLocation.setOnClickListener {
+        binding.mapView2.setOnClickListener {
             presenter.cacheFreepark(binding.parkingLocation.text.toString(), binding.description.text.toString())
             presenter.doSetLocation()
         }
+        binding.mapView2.onCreate(savedInstanceState);
+        binding.mapView2.getMapAsync {
+            map = it
+            presenter.doConfigureMap(map)
+            it.setOnMapClickListener { presenter.doSetLocation() }
+        }
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_freepark, menu)
@@ -73,8 +83,8 @@ class FreeparkView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     fun showFreepark(freepark: FreeparkModel) {
-        binding.parkingLocation.setText(freepark.location)
-        binding.description.setText(freepark.description)
+        if (binding.parkingLocation.text.isEmpty()) binding.parkingLocation.setText(freepark.location)
+        if (binding.description.text.isEmpty()) binding.description.setText(freepark.description)
 
         Picasso.get()
             .load(freepark.image)
@@ -82,6 +92,8 @@ class FreeparkView : AppCompatActivity() {
         if (freepark.image != Uri.EMPTY) {
             binding.chooseImage.setText(R.string.change_freepark_image)
         }
+        binding.lat.setText("%.6f".format(freepark.lat))
+        binding.lng.setText("%.6f".format(freepark.lng))
 
     }
 
@@ -93,6 +105,32 @@ class FreeparkView : AppCompatActivity() {
             .load(image)
             .into(binding.freeparkImage)
         binding.chooseImage.setText(R.string.change_freepark_image)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.mapView2.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        binding.mapView2.onLowMemory()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.mapView2.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.mapView2.onResume()
+        presenter.doRestartLocationUpdates()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        binding.mapView2.onSaveInstanceState(outState)
     }
 
 }

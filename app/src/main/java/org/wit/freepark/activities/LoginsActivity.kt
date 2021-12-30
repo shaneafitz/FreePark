@@ -16,7 +16,7 @@ class LoginsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginsBinding
     lateinit var app: MainApp
     private lateinit var mAuth: FirebaseAuth
-
+//view
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginsBinding.inflate(layoutInflater)
@@ -53,16 +53,17 @@ class LoginsActivity : AppCompatActivity() {
 
         setUpToolbar()
     }
-
+//view
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
     // function so nothing happens when backpressed after login
+    //presenter
     override fun onBackPressed() {
 // empty so nothing happens
     }
-
+//presenter
     private fun logout() {
         mAuth.signOut()
     }
