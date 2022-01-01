@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.wit.freepark.R
 import org.wit.freepark.views.freeparkList.FreeparkAdapter
 import org.wit.freepark.views.freeparkList.FreeparkListener
@@ -31,7 +34,8 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        loadFreeparks()
+        updateRecyclerView()
+//        loadFreeparks()
 //        registerRefreshCallback()
 //        registerMapCallback()
     }
@@ -52,16 +56,24 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
         presenter.doEditFreepark(freepark)
 
     }
-    private fun loadFreeparks() {
-        binding.recyclerView.adapter = FreeparkAdapter(presenter.getFreeparks(), this)
-        binding.recyclerView.adapter?.notifyDataSetChanged()
-    }
     override fun onResume() {
         //update the view
+        super.onResume()
         binding.recyclerView.adapter?.notifyDataSetChanged()
         i("recyclerView onResume")
-        super.onResume()
+
     }
+    private fun updateRecyclerView(){
+        GlobalScope.launch(Dispatchers.Main){
+            binding.recyclerView.adapter =
+                FreeparkAdapter(presenter.getFreeparks(), this@FreeparkListView)
+        }
+    }
+//    private fun loadFreeparks() {
+//        binding.recyclerView.adapter = FreeparkAdapter(presenter.getFreeparks(), this)
+//        binding.recyclerView.adapter?.notifyDataSetChanged()
+//    }
+
 
 //    fun showFreeparks (freeparks: List<FreeparkModel>) {
 //        binding.recyclerView.adapter = FreeparkAdapter(freeparks, this)

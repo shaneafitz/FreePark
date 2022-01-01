@@ -1,9 +1,9 @@
 package org.wit.freepark.models
 
 interface  FreeparkStore {
-    fun findAll(): List<FreeparkModel>
-    fun create(freepark: FreeparkModel)
-    fun update(freepark: FreeparkModel)
-    fun delete(freepark: FreeparkModel)
-    fun findById(id:Long) : FreeparkModel?
+   suspend fun findAll(): List<FreeparkModel>
+   suspend fun create(freepark: FreeparkModel)
+   suspend fun update(freepark: FreeparkModel)
+   suspend fun delete(freepark: FreeparkModel)
+   suspend fun findById(id:Long) : FreeparkModel?
 }

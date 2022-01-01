@@ -30,38 +30,36 @@ class FreeparkJSONStore(private val context: Context) : FreeparkStore {
         }
     }
 
-    override fun findAll(): MutableList<FreeparkModel> {
+    override suspend fun findAll(): MutableList<FreeparkModel> {
         logAll()
         return freeparks
     }
 
-    override fun create(freepark: FreeparkModel) {
+    override suspend fun create(freepark: FreeparkModel) {
         freepark.id = generateRandomId()
         freeparks.add(freepark)
         serialize()
     }
 
 
-    override fun update(freepark: FreeparkModel) {
+    override suspend fun update(freepark: FreeparkModel) {
         val freeparksList = findAll() as ArrayList<FreeparkModel>
         var foundFreepark: FreeparkModel? = freeparksList.find { p -> p.id == freepark.id }
         if (foundFreepark != null) {
-            foundFreepark.location = freepark.location
+            foundFreepark.title = freepark.title
             foundFreepark.description = freepark.description
             foundFreepark.image = freepark.image
-            foundFreepark.lat = freepark.lat
-            foundFreepark.lng = freepark.lng
-            foundFreepark.zoom = freepark.zoom
+            foundFreepark.location = freepark.location
         }
         serialize()
     }
 
-    override fun delete(freepark: FreeparkModel){
+    override suspend fun delete(freepark: FreeparkModel){
         val foundFreepark: FreeparkModel? = freeparks.find { it.id == freepark.id }
         freeparks.remove(foundFreepark)
         serialize()
     }
-    override fun findById(id:Long) : FreeparkModel? {
+    override suspend fun findById(id:Long) : FreeparkModel? {
         val foundFreepark: FreeparkModel? = freeparks.find { it.id == id }
         return foundFreepark
     }

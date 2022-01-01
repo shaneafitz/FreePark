@@ -3,6 +3,9 @@ package org.wit.freepark.views.freeparkList
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.wit.freepark.views.map.FreeparkMapView
 import org.wit.freepark.views.freepark.FreeparkView
 import org.wit.freepark.main.MainApp
@@ -10,17 +13,16 @@ import org.wit.freepark.models.FreeparkModel
 
 class FreeparkListPresenter(val view: FreeparkListView) {
 
-    var app: MainApp
+    var app: MainApp = view.application as MainApp
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
 
     init {
-        app = view.application as MainApp
         registerMapCallback()
         registerRefreshCallback()
     }
 
-    fun getFreeparks() = app.freeparks.findAll()
+    suspend fun getFreeparks() = app.freeparks.findAll()
 
     fun doAddFreepark() {
         val launcherIntent = Intent(view, FreeparkView::class.java)
@@ -40,7 +42,11 @@ class FreeparkListPresenter(val view: FreeparkListView) {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             view.registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { getFreeparks() }
+            {
+                GlobalScope.launch(Dispatchers.Main){
+                    getFreeparks()
+                }
+            }
     }
     private fun registerMapCallback() {
         mapIntentLauncher =

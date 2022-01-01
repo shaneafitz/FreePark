@@ -8,6 +8,9 @@ import android.view.MenuItem
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.wit.freepark.R
 import org.wit.freepark.databinding.ActivityFreeparkBinding
 import org.wit.freepark.models.FreeparkModel
@@ -69,11 +72,18 @@ class FreeparkView : AppCompatActivity() {
                     Snackbar.make(binding.root, R.string.enter_freepark_location, Snackbar.LENGTH_LONG)
                         .show()
                 } else {
-                    presenter.doAddOrSave(binding.parkingLocation.text.toString(), binding.description.text.toString())
+                    GlobalScope.launch(Dispatchers.IO) {
+                        presenter.doAddOrSave(
+                            binding.parkingLocation.text.toString(),
+                            binding.description.text.toString()
+                        )
+                    }
                 }
             }
             R.id.item_delete -> {
-                presenter.doDelete()
+                GlobalScope.launch(Dispatchers.IO) {
+                    presenter.doDelete()
+                }
             }
             R.id.item_cancel -> {
                 presenter.doCancel()
@@ -83,7 +93,7 @@ class FreeparkView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     fun showFreepark(freepark: FreeparkModel) {
-        if (binding.parkingLocation.text.isEmpty()) binding.parkingLocation.setText(freepark.location)
+        if (binding.parkingLocation.text.isEmpty()) binding.parkingLocation.setText(freepark.title)
         if (binding.description.text.isEmpty()) binding.description.setText(freepark.description)
 
         Picasso.get()
@@ -92,8 +102,8 @@ class FreeparkView : AppCompatActivity() {
         if (freepark.image != Uri.EMPTY) {
             binding.chooseImage.setText(R.string.change_freepark_image)
         }
-        binding.lat.setText("%.6f".format(freepark.lat))
-        binding.lng.setText("%.6f".format(freepark.lng))
+        binding.lat.setText("%.6f".format(freepark.location.lat))
+        binding.lng.setText("%.6f".format(freepark.location.lng))
 
     }
 

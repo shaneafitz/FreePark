@@ -2,12 +2,12 @@ package org.wit.freepark.views.map
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.wit.freepark.databinding.ActivityFreeparkMapsBinding
 import org.wit.freepark.databinding.ContentFreeparkMapsBinding
 import org.wit.freepark.main.MainApp
@@ -15,8 +15,9 @@ import org.wit.freepark.models.FreeparkModel
 
 class FreeparkMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
-    private lateinit var contentBinding: ContentFreeparkMapsBinding
     private lateinit var binding: ActivityFreeparkMapsBinding
+    private lateinit var contentBinding: ContentFreeparkMapsBinding
+
 //    lateinit var map: GoogleMap
     lateinit var app: MainApp
     lateinit var presenter: FreeparkMapPresenter
@@ -34,11 +35,13 @@ class FreeparkMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         contentBinding = ContentFreeparkMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
         contentBinding.mapView.getMapAsync {
-            presenter.doPopulateMap(it)
+            GlobalScope.launch(Dispatchers.Main) {
+                presenter.doPopulateMap(it)
+            }
         }
     }
     fun showFreepark(freepark: FreeparkModel) {
-        contentBinding.currentLocation.text = freepark.location
+        contentBinding.currentLocation.text = freepark.title
         contentBinding.currentDescription.text = freepark.description
         Picasso.get()
             .load(freepark.image)
@@ -46,7 +49,9 @@ class FreeparkMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        presenter.doMarkerSelected(marker)
+        GlobalScope.launch(Dispatchers.Main) {
+            presenter.doMarkerSelected(marker)
+        }
         return true
     }
 

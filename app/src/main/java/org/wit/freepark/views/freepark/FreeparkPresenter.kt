@@ -28,12 +28,12 @@ import timber.log.Timber.i
 
 class FreeparkPresenter(private val view: FreeparkView) {
 
+    private val locationRequest = createDefaultLocationRequest()
     var freepark = FreeparkModel()
     var map: GoogleMap? = null
-    var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
-    val locationRequest = createDefaultLocationRequest()
     var app: MainApp = view.application as MainApp
-    var binding: ActivityFreeparkBinding = ActivityFreeparkBinding.inflate(view.layoutInflater)
+
+    var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
@@ -41,6 +41,10 @@ class FreeparkPresenter(private val view: FreeparkView) {
     private val location = Location(52.245696, -7.139102, 15f)
 
     init {
+        registerImagePickerCallback()
+        registerMapCallback()
+        doPermissionLauncher()
+
         if (view.intent.hasExtra("freepark_edit")) {
             edit = true
             freepark = view.intent.extras?.getParcelable("freepark_edit")!!
@@ -49,31 +53,27 @@ class FreeparkPresenter(private val view: FreeparkView) {
             if (checkLocationPermissions(view)) {
                 doSetCurrentLocation()
             }
-            freepark.lat = location.lat
-            freepark.lng = location.lng
+            freepark.location.lat = location.lat
+            freepark.location.lng = location.lng
         }
         if (checkLocationPermissions(view)) {
             doSetCurrentLocation()
         }
-        registerImagePickerCallback()
-        registerMapCallback()
-        doPermissionLauncher()
+
     }
 
     fun doConfigureMap(m: GoogleMap) {
         map = m
-        locationUpdate(freepark.lat, freepark.lng)
+        locationUpdate(freepark.location.lat, freepark.location.lng)
     }
     fun locationUpdate(lat: Double, lng: Double) {
-        freepark.lat = lat
-        freepark.lng = lng
-        freepark.zoom = 15f
+       freepark.location = location
         map?.clear()
         map?.uiSettings?.setZoomControlsEnabled(true)
-        val options = MarkerOptions().title(freepark.location).position(LatLng(freepark.lat, freepark.lng))
+        val options = MarkerOptions().title(freepark.title).position(LatLng(freepark.location.lat, freepark.location.lng))
         map?.addMarker(options)
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(freepark.lat, freepark.lng), freepark.zoom))
-        view?.showFreepark(freepark)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(freepark.location.lat, freepark.location.lng), freepark.location.zoom))
+        view.showFreepark(freepark)
     }
 
     @SuppressLint("MissingPermission")
@@ -91,8 +91,8 @@ class FreeparkPresenter(private val view: FreeparkView) {
         }
     }
 
-    fun doAddOrSave(location: String, description: String) {
-        freepark.location = location
+    suspend fun doAddOrSave(title: String, description: String) {
+        freepark.title = title
         freepark.description = description
         if (edit) {
             app.freeparks.update(freepark)
@@ -116,7 +116,7 @@ class FreeparkPresenter(private val view: FreeparkView) {
 
     }
 
-    fun doDelete() {
+    suspend fun doDelete() {
         app.freeparks.delete(freepark)
         view.finish()
 
@@ -125,19 +125,22 @@ class FreeparkPresenter(private val view: FreeparkView) {
     fun doSelectImage() {
         showImagePicker(imageIntentLauncher)
     }
-        fun doSetLocation() {
-        if (freepark.zoom != 0f) {
-            location.lat =  freepark.lat
-            location.lng = freepark.lng
-            location.zoom = freepark.zoom
-            locationUpdate(freepark.lat, freepark.lng)
+
+    fun doSetLocation() {
+
+        if (freepark.location.zoom != 0f) {
+
+            location.lat = freepark.location.lat
+            location.lng = freepark.location.lng
+            location.zoom = freepark.location.zoom
+            locationUpdate(freepark.location.lat, freepark.location.lng)
         }
         val launcherIntent = Intent(view, EditLocationView::class.java)
             .putExtra("location", location)
         mapIntentLauncher.launch(launcherIntent)
     }
-    fun cacheFreepark (location: String, description: String) {
-        freepark.location = location;
+    fun cacheFreepark (title: String, description: String) {
+        freepark.title = title;
         freepark.description = description
     }
 
@@ -171,9 +174,7 @@ class FreeparkPresenter(private val view: FreeparkView) {
                             Timber.i("Got Location ${result.data.toString()}")
                             val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             Timber.i("Location == $location")
-                            freepark.lat = location.lat
-                            freepark.lng = location.lng
-                            freepark.zoom = location.zoom
+                            freepark.location = location
                         } // end of if
                     }
                     AppCompatActivity.RESULT_CANCELED -> { } else -> { }

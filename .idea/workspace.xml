@@ -13,9 +13,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0805ae5d-027a-4591-bf51-7fb6bec85526" name="Default Changelist" comment="Added files that didn't commit for MVP architecture">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/helpers/Converters.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/room/Database.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/room/FreeparkDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/room/FreeparkStoreRoom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/editLocation/EditLocationView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/editLocation/EditLocationView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/main/MainApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/main/MainApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkJSONStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkJSONStore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkMemStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkMemStore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkStore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkAdaptor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkAdaptor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/map/FreeparkMapPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/map/FreeparkMapPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/map/FreeparkMapView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/map/FreeparkMapView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_freepark_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_freepark_maps.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +41,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\fitzp\.android\avd\Pixel_4_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\fitzp\.android\avd\Pixel_4_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -40,7 +58,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="MVP" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -288,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640901931676</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Revised edit location view">
+      <created>1640970447243</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1640970447243</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,7 +327,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="rooms" />
                       </list>
                     </value>
                   </entry>
@@ -352,6 +377,7 @@
     <MESSAGE value="Display all parking locations on a map in a new activity" />
     <MESSAGE value="Updated to MVP architecture" />
     <MESSAGE value="Update location to use current location as the starting point" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update location to use current location as the starting point" />
+    <MESSAGE value="Revised edit location view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revised edit location view" />
   </component>
 </project>
