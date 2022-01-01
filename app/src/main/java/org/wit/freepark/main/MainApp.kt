@@ -1,6 +1,7 @@
 package org.wit.freepark.main
 
 import android.app.Application
+import org.wit.freepark.models.FreeparkFireStore
 import org.wit.freepark.models.FreeparkJSONStore
 import org.wit.freepark.models.FreeparkMemStore
 import org.wit.freepark.models.FreeparkStore
@@ -17,7 +18,7 @@ class MainApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        freeparks = FreeparkStoreRoom(applicationContext)
+        freeparks = FreeparkFireStore(applicationContext)
         i("FreePark started")
 //        freeparks.add(FreeparkModel("One", "About one..."))
 //        freeparks.add(FreeparkModel("Two", "About two..."))

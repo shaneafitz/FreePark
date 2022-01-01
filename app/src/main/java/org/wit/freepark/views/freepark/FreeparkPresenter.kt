@@ -32,6 +32,7 @@ class FreeparkPresenter(private val view: FreeparkView) {
     var freepark = FreeparkModel()
     var map: GoogleMap? = null
     var app: MainApp = view.application as MainApp
+    var locationManuallyChanged = false;
 
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
@@ -56,10 +57,6 @@ class FreeparkPresenter(private val view: FreeparkView) {
             freepark.location.lat = location.lat
             freepark.location.lng = location.lng
         }
-        if (checkLocationPermissions(view)) {
-            doSetCurrentLocation()
-        }
-
     }
 
     fun doConfigureMap(m: GoogleMap) {
@@ -82,7 +79,9 @@ class FreeparkPresenter(private val view: FreeparkView) {
             override fun onLocationResult(locationResult: LocationResult?) {
                 if (locationResult != null && locationResult.locations != null) {
                     val l = locationResult.locations.last()
-                    locationUpdate(l.latitude, l.longitude)
+                    if(!locationManuallyChanged) {
+                        locationUpdate(l.latitude, l.longitude)
+                    }
                 }
             }
         }
@@ -127,6 +126,7 @@ class FreeparkPresenter(private val view: FreeparkView) {
     }
 
     fun doSetLocation() {
+        locationManuallyChanged = true;
 
         if (freepark.location.zoom != 0f) {
 
@@ -154,7 +154,7 @@ class FreeparkPresenter(private val view: FreeparkView) {
                     AppCompatActivity.RESULT_OK -> {
                         if (result.data != null) {
                             Timber.i("Got Result ${result.data!!.data}")
-                            freepark.image = result.data!!.data!!
+                            freepark.image = result.data!!.data!!.toString()
                             view.updateImage(freepark.image)
                         }
                     }

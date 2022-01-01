@@ -53,7 +53,11 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
         when (item.itemId) {
             R.id.item_add -> { presenter.doAddFreepark() }
             R.id.item_map -> { presenter.doShowFreeparksMap() }
-            R.id.item_logout -> { presenter.doLogout() }
+            R.id.item_logout -> {
+                GlobalScope.launch(Dispatchers.IO) {
+                    presenter.doLogout()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }

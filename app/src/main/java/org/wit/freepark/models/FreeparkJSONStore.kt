@@ -77,6 +77,9 @@ class FreeparkJSONStore(private val context: Context) : FreeparkStore {
     private fun logAll() {
         freeparks.forEach { Timber.i("$it") }
     }
+    override suspend fun clear(){
+        freeparks.clear()
+    }
 }
 
 class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
@@ -95,4 +98,5 @@ class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
     ): JsonElement {
         return JsonPrimitive(src.toString())
     }
+
 }

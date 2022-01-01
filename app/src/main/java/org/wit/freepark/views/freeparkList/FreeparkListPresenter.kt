@@ -3,6 +3,7 @@ package org.wit.freepark.views.freeparkList
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -42,7 +43,9 @@ class FreeparkListPresenter(private val view: FreeparkListView) {
         editIntentLauncher.launch(launcherIntent)
     }
 
-    fun doLogout(){
+    suspend fun doLogout(){
+        FirebaseAuth.getInstance().signOut()
+        app.freeparks.clear()
         val launcherIntent = Intent(view, LoginView::class.java)
         editIntentLauncher.launch(launcherIntent)
     }

@@ -4,25 +4,43 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
+import org.wit.freepark.main.MainApp
+import org.wit.freepark.models.FreeparkFireStore
+import org.wit.freepark.models.FreeparkStore
 import org.wit.freepark.views.freeparkList.FreeparkListView
 
 
 
 class LoginPresenter (val view: LoginView)  {
     private lateinit var loginIntentLauncher : ActivityResultLauncher<Intent>
+    var app: MainApp = view.application as MainApp
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    var fireStore: FreeparkFireStore? = null
 
     init{
         registerLoginCallback()
+        if (app.freeparks is FreeparkFireStore) {
+            fireStore = app.freeparks as FreeparkFireStore
+        }
     }
-    var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun doLogin(email: String, password: String) {
         view.showProgress()
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(view) { task ->
             if (task.isSuccessful) {
-                val launcherIntent = Intent(view, FreeparkListView::class.java)
-                loginIntentLauncher.launch(launcherIntent)
+                if (fireStore != null){
+                    fireStore!!.fetchFreeparks {
+                        view?.hideProgress()
+                        val launcherIntent = Intent(view, FreeparkListView::class.java)
+                        loginIntentLauncher.launch(launcherIntent)
+                    }
+                } else {
+                    view?.hideProgress()
+                    val launcherIntent = Intent(view, FreeparkListView::class.java)
+                    loginIntentLauncher.launch(launcherIntent)
+                }
             } else {
+                view?.hideProgress()
                 view.showSnackBar("Login failed: ${task.exception?.message}")
             }
             view.hideProgress()
@@ -34,8 +52,11 @@ class LoginPresenter (val view: LoginView)  {
         view.showProgress()
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
             if (task.isSuccessful) {
-                val launcherIntent = Intent(view, FreeparkListView::class.java)
-                loginIntentLauncher.launch(launcherIntent)
+                fireStore!!.fetchFreeparks {
+                    view?.hideProgress()
+                    val launcherIntent = Intent(view, FreeparkListView::class.java)
+                    loginIntentLauncher.launch(launcherIntent)
+                }
             } else {
                 view.showSnackBar("Login failed: ${task.exception?.message}")
             }
@@ -47,4 +68,5 @@ class LoginPresenter (val view: LoginView)  {
             view.registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             {  }
     }
+
 }

@@ -35,7 +35,12 @@ class FreeparkAdapter constructor(private var freeparks: List<FreeparkModel>,
         fun bind(freepark: FreeparkModel, listener: FreeparkListener) {
             binding.freeparkLocation.text = freepark.title
             binding.description.text = freepark.description
-            Picasso.get().load(freepark.image).resize(200,200).into(binding.imageIcon)
+            if (freepark.image != ""){
+                Picasso.get()
+                    .load(freepark.image)
+                    .resize(200, 200)
+                    .into(binding.imageIcon)
+            }
             binding.root.setOnClickListener { listener.onFreeparkClick(freepark)}
         }
     }

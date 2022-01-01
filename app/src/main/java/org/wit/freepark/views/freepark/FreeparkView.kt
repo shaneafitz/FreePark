@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import org.wit.freepark.R
 import org.wit.freepark.databinding.ActivityFreeparkBinding
 import org.wit.freepark.models.FreeparkModel
+import org.wit.freepark.models.Location
 import timber.log.Timber.i
 
 class FreeparkView : AppCompatActivity() {
@@ -96,25 +97,28 @@ class FreeparkView : AppCompatActivity() {
         if (binding.parkingLocation.text.isEmpty()) binding.parkingLocation.setText(freepark.title)
         if (binding.description.text.isEmpty()) binding.description.setText(freepark.description)
 
-        Picasso.get()
-            .load(freepark.image)
-            .into(binding.freeparkImage)
-        if (freepark.image != Uri.EMPTY) {
+        if (freepark.image != "") {
+            Picasso.get()
+                .load(freepark.image)
+                .into(binding.freeparkImage)
+
             binding.chooseImage.setText(R.string.change_freepark_image)
         }
-        binding.lat.setText("%.6f".format(freepark.location.lat))
-        binding.lng.setText("%.6f".format(freepark.location.lng))
-
+        this.showLocation(freepark.location)
     }
 
 
 
-    fun updateImage(image: Uri){
+    fun updateImage(image: String){
         i("Image updated")
         Picasso.get()
             .load(image)
             .into(binding.freeparkImage)
         binding.chooseImage.setText(R.string.change_freepark_image)
+    }
+    private fun showLocation (loc: Location){
+        binding.lat.setText("%.6f".format(loc.lat))
+        binding.lng.setText("%.6f".format(loc.lng))
     }
 
     override fun onDestroy() {

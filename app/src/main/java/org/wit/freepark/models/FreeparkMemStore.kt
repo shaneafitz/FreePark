@@ -44,4 +44,7 @@ class FreeparkMemStore : FreeparkStore {
         val foundFreepark: FreeparkModel? = freeparks.find { it.id == id }
         return foundFreepark
     }
+    override suspend fun clear(){
+        freeparks.clear()
+    }
 }

@@ -6,4 +6,5 @@ interface  FreeparkStore {
    suspend fun update(freepark: FreeparkModel)
    suspend fun delete(freepark: FreeparkModel)
    suspend fun findById(id:Long) : FreeparkModel?
+   suspend fun clear()
 }

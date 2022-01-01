@@ -35,5 +35,8 @@ class FreeparkStoreRoom(val context: Context) : FreeparkStore {
     override suspend fun delete(freepark: FreeparkModel) {
         dao.deleteFreepark(freepark)
     }
+    override suspend fun clear(){
+
+    }
 
 }
