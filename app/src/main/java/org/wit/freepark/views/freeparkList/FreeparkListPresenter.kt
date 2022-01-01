@@ -10,15 +10,17 @@ import org.wit.freepark.views.map.FreeparkMapView
 import org.wit.freepark.views.freepark.FreeparkView
 import org.wit.freepark.main.MainApp
 import org.wit.freepark.models.FreeparkModel
+import org.wit.freepark.views.login.LoginView
 
-class FreeparkListPresenter(val view: FreeparkListView) {
+class FreeparkListPresenter(private val view: FreeparkListView) {
 
     var app: MainApp = view.application as MainApp
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
-    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+//    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var editIntentLauncher : ActivityResultLauncher<Intent>
 
     init {
-        registerMapCallback()
+        registerEditCallback()
         registerRefreshCallback()
     }
 
@@ -26,18 +28,23 @@ class FreeparkListPresenter(val view: FreeparkListView) {
 
     fun doAddFreepark() {
         val launcherIntent = Intent(view, FreeparkView::class.java)
-        refreshIntentLauncher.launch(launcherIntent)
+        editIntentLauncher.launch(launcherIntent)
     }
 
     fun doEditFreepark(freepark: FreeparkModel) {
         val launcherIntent = Intent(view, FreeparkView::class.java)
         launcherIntent.putExtra("freepark_edit", freepark)
-        mapIntentLauncher.launch(launcherIntent)
+        editIntentLauncher.launch(launcherIntent)
     }
 
     fun doShowFreeparksMap() {
         val launcherIntent = Intent(view, FreeparkMapView::class.java)
-        refreshIntentLauncher.launch(launcherIntent)
+        editIntentLauncher.launch(launcherIntent)
+    }
+
+    fun doLogout(){
+        val launcherIntent = Intent(view, LoginView::class.java)
+        editIntentLauncher.launch(launcherIntent)
     }
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
@@ -48,8 +55,8 @@ class FreeparkListPresenter(val view: FreeparkListView) {
                 }
             }
     }
-    private fun registerMapCallback() {
-        mapIntentLauncher =
+    private fun registerEditCallback() {
+        editIntentLauncher =
             view.registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             {  }
     }

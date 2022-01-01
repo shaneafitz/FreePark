@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,10 +28,14 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
         binding = ActivityFreeparkListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbar.title = title
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            binding.toolbar.title = "${title}: ${user.email}"
+        }
         setSupportActionBar(binding.toolbar)
         presenter = FreeparkListPresenter(this)
 
-        app = application as MainApp
+//        app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
@@ -48,6 +53,7 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
         when (item.itemId) {
             R.id.item_add -> { presenter.doAddFreepark() }
             R.id.item_map -> { presenter.doShowFreeparksMap() }
+            R.id.item_logout -> { presenter.doLogout() }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -59,6 +65,7 @@ class FreeparkListView : AppCompatActivity(), FreeparkListener {
     override fun onResume() {
         //update the view
         super.onResume()
+        updateRecyclerView()
         binding.recyclerView.adapter?.notifyDataSetChanged()
         i("recyclerView onResume")
 

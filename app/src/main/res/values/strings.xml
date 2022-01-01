@@ -25,6 +25,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="already_have_an_account">Already have an Account?</string>
     <string name="title_activity_freepark_maps">Map of all Parking Locations</string>
+    <string name="menu_showMap">Show Map</string>
+    <string name="menu_logout">Logout</string>
+    <string name="title_activity_login"> Signup/Login to Freepark</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
