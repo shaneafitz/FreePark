@@ -13,21 +13,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0805ae5d-027a-4591-bf51-7fb6bec85526" name="Default Changelist" comment="Added files that didn't commit for MVP architecture">
+      <change afterPath="$PROJECT_DIR$/app/src/images/authentication.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/crud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/database.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/git branches.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/location.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/locationPermission.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/persistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/releases.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/images/storage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/helpers/ImageHelpers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/helpers/ImageHelpers.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/main/MainApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/main/MainApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkJSONStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkJSONStore.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkMemStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkMemStore.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/models/FreeparkStore.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/room/FreeparkStoreRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/room/FreeparkStoreRoom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freepark/FreeparkView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkAdaptor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkAdaptor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/freeparkList/FreeparkListView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/login/LoginPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/wit/freepark/views/login/LoginPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_freepark_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_freepark_maps.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +40,34 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FreePark" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FreePark" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FreePark" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -314,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641063029420</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Store freeparks in Firebase Realtime Database &amp; Store images in Firebase Storage">
+      <created>1641081092593</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1641081092593</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -380,6 +415,7 @@
     <MESSAGE value="Update location to use current location as the starting point" />
     <MESSAGE value="Revised edit location view" />
     <MESSAGE value="Refactored login to MVP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored login to MVP" />
+    <MESSAGE value="Store freeparks in Firebase Realtime Database &amp; Store images in Firebase Storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Store freeparks in Firebase Realtime Database &amp; Store images in Firebase Storage" />
   </component>
 </project>
