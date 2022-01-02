@@ -44,7 +44,7 @@ are 3 release branches;
 
 <img src="/app/src/images/git branches.png"/>
 <img src="/app/src/images/releases.png"/>
-<img src="/app/src/images/crud.png"/>
+
 ---
 ### Personal statement
 
